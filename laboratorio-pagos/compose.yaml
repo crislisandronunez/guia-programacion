@@ -1,0 +1,19 @@
+name: laboratorio-pagos
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: pagos_lab
+      POSTGRES_USER: pagos_lab
+      POSTGRES_PASSWORD: pagos_lab_local
+    ports:
+      - "127.0.0.1:5434:5432"
+    volumes:
+      - pagos_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pagos_lab -d pagos_lab"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  pagos_data:

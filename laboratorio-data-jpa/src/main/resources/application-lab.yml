@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        generate_statistics: true
+        query:
+          fail_on_pagination_over_collection_fetch: true
+logging:
+  level:
+    org.hibernate.SQL: DEBUG

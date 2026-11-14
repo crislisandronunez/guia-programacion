@@ -1,0 +1,4 @@
+codigo,nombre,activo,deudaVencida
+C-001,Almacen Norte,true,0.00
+C-002,Comercio Sur,true,1.00
+C-003,Kiosco Oeste,false,0.00

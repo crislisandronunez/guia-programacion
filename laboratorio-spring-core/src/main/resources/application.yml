@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: laboratorio-spring-core
+  lifecycle:
+    timeout-per-shutdown-phase: 10s
+
+server:
+  address: 127.0.0.1
+  port: ${SERVER_PORT:8086}
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never

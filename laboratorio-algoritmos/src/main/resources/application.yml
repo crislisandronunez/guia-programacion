@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: laboratorio-algoritmos
+  lifecycle:
+    timeout-per-shutdown-phase: 10s
+
+server:
+  address: 127.0.0.1
+  port: ${SERVER_PORT:8090}
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never

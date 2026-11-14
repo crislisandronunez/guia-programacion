@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: laboratorio-resolucion-problemas
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5435/problemas_lab}
+    username: ${DB_USERNAME:problemas_lab}
+    password: ${DB_PASSWORD:problemas_lab_local}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+server:
+  address: 127.0.0.1
+  port: ${SERVER_PORT:8083}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never

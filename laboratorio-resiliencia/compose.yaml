@@ -1,0 +1,52 @@
+name: laboratorio-resiliencia
+services:
+  postgres:
+    image: postgres:17
+    profiles: ["datos"]
+    environment:
+      POSTGRES_DB: resiliencia_lab
+      POSTGRES_USER: resiliencia_lab
+      POSTGRES_PASSWORD: resiliencia_lab_local
+    ports:
+      - "127.0.0.1:5437:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U resiliencia_lab -d resiliencia_lab"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  redis:
+    image: redis:7.4-alpine
+    profiles: ["cache"]
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "127.0.0.1:6381:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  rabbitmq:
+    image: rabbitmq:4-management
+    profiles: ["mensajeria"]
+    environment:
+      RABBITMQ_DEFAULT_USER: resiliencia_lab
+      RABBITMQ_DEFAULT_PASS: resiliencia_lab_local
+    ports:
+      - "127.0.0.1:5674:5672"
+      - "127.0.0.1:15674:15672"
+    volumes:
+      - rabbit_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+volumes:
+  postgres_data:
+  redis_data:
+  rabbit_data:
+

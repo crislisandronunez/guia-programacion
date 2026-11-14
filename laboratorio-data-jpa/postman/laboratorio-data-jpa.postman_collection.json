@@ -1,0 +1,35 @@
+{
+  "info": {
+    "name": "Laboratorio Data JPA",
+    "description": "Solicitud inicial; agregar endpoints de ejercicios al implementarlos.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8084"
+    }
+  ],
+  "item": [
+    {
+      "name": "00 - Aplicación y PostgreSQL",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/actuator/health"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Base disponible', () => pm.expect(pm.response.json().status).to.eql('UP'));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

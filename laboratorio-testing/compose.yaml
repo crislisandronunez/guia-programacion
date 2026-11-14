@@ -1,0 +1,20 @@
+name: laboratorio-testing
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: testing_lab
+      POSTGRES_USER: testing_lab
+      POSTGRES_PASSWORD: testing_lab_local
+    ports:
+      - "127.0.0.1:5439:5432"
+    volumes:
+      - testing_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U testing_lab -d testing_lab"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  testing_data:
+

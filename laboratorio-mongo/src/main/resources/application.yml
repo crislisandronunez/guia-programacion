@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: laboratorio-mongo
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27018/mongo_lab?replicaSet=rs0&directConnection=true&serverSelectionTimeoutMS=5000&connectTimeoutMS=3000&socketTimeoutMS=5000}
+      auto-index-creation: false
+      uuid-representation: standard
+
+server:
+  address: 127.0.0.1
+  port: ${SERVER_PORT:8085}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never

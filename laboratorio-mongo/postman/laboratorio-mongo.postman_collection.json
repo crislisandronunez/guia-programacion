@@ -1,0 +1,35 @@
+{
+  "info": {
+    "name": "Laboratorio MongoDB",
+    "description": "Comprobación inicial. Agregar solicitudes de negocio al resolver las consignas.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8085"
+    }
+  ],
+  "item": [
+    {
+      "name": "00 - Aplicación y MongoDB",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/actuator/health"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Disponible', () => pm.expect(pm.response.json().status).to.eql('UP'));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+codigo,nombre,activo,deudaVencida
+C-004,Local Este,true,0.00
+C-004,Duplicado,true,0.00
+C-005,,true,2.00
+C-006,Valor invalido,talvez,abc

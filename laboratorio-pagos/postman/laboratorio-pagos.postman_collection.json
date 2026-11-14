@@ -1,0 +1,22 @@
+{
+  "info": {
+    "name": "Laboratorio de pagos",
+    "description": "Comprobación inicial. Agregaremos los endpoints de pagos con cada ejercicio.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{"key": "baseUrl", "value": "http://localhost:8080"}],
+  "item": [{
+    "name": "00 - Comprobar aplicación y base de datos",
+    "request": {"method": "GET", "header": [], "url": "{{baseUrl}}/actuator/health"},
+    "event": [{
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+          "pm.test('Aplicación disponible', () => pm.expect(pm.response.json().status).to.eql('UP'));"
+        ]
+      }
+    }]
+  }]
+}

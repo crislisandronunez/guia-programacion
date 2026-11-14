@@ -1,0 +1,36 @@
+name: laboratorio-resolucion-problemas
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: problemas_lab
+      POSTGRES_USER: problemas_lab
+      POSTGRES_PASSWORD: problemas_lab_local
+    ports:
+      - "127.0.0.1:5435:5432"
+    volumes:
+      - problemas_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U problemas_lab -d problemas_lab"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  rabbitmq:
+    image: rabbitmq:4-management
+    profiles: ["mensajeria"]
+    environment:
+      RABBITMQ_DEFAULT_USER: problemas_lab
+      RABBITMQ_DEFAULT_PASS: problemas_lab_local
+    ports:
+      - "127.0.0.1:5673:5672"
+      - "127.0.0.1:15673:15672"
+    volumes:
+      - rabbit_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+volumes:
+  problemas_data:
+  rabbit_data:

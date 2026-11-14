@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: laboratorio-redis
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6380}
+      username: ${REDIS_USERNAME:}
+      password: ${REDIS_PASSWORD:}
+      timeout: 2s
+      connect-timeout: 2s
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60s
+      key-prefix: "lab:redis:cache:"
+      use-key-prefix: true
+      cache-null-values: false
+
+server:
+  address: 127.0.0.1
+  port: ${SERVER_PORT:8081}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never

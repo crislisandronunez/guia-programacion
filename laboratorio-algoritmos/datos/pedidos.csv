@@ -1,0 +1,7 @@
+id,clienteId,vip,prioridad,importeCentavos,creadoEn
+P-03,C-01,false,2,15000,2026-01-01T10:00:00Z
+P-01,C-02,true,1,10000,2026-01-01T10:01:00Z
+P-04,C-01,false,1,8000,2026-01-01T10:02:00Z
+P-02,C-03,true,1,20000,2026-01-01T10:03:00Z
+P-05,C-02,true,2,10000,2026-01-01T10:04:00Z
+

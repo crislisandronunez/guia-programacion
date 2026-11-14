@@ -1,0 +1,8 @@
+comprobanteId,pedidoId,importeCentavos
+C-01,P-01,6000
+C-02,P-01,4000
+C-02,P-01,4000
+C-03,P-02,5000
+C-04,P-03,17000
+C-05,P-99,1000
+

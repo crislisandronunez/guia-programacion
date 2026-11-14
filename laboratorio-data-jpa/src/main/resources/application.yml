@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: laboratorio-data-jpa
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5436/jpa_lab}
+    username: ${DB_USERNAME:jpa_lab}
+    password: ${DB_PASSWORD:jpa_lab_local}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+server:
+  address: 127.0.0.1
+  port: ${SERVER_PORT:8084}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never

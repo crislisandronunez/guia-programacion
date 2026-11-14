@@ -1,0 +1,9 @@
+{
+  "referenciaCliente": "PEDIDO-DEMO-01",
+  "destino": "CENTRO",
+  "lineas": [
+    {"sku": "CUAD-01", "cantidad": 2},
+    {"sku": "LIB-01", "cantidad": 1}
+  ]
+}
+
