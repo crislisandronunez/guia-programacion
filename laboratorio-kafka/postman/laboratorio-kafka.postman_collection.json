@@ -1,0 +1,35 @@
+{
+  "info": {
+    "name": "Laboratorio Kafka",
+    "description": "Solicitud inicial de salud. Agregá los endpoints de negocio al resolver las consignas.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8093"
+    }
+  ],
+  "item": [
+    {
+      "name": "00 - Salud de aplicación y broker Kafka",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/actuator/health"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Aplicación y broker disponibles', () => pm.expect(pm.response.json().status).to.eql('UP'));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
